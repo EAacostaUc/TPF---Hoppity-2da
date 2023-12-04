@@ -8,7 +8,6 @@
 
 //#define N 16
 
-
 #define FICHA_NEGRO "IMG/bola-negra.png"
 
 #define FICHA_BLANCO "IMG/bola-blanca.png"
