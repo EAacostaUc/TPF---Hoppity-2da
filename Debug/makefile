@@ -23,7 +23,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TPF---Hoppity-2da
+BUILD_ARTIFACT_NAME := TPF Final - Hoppity (Alexander & Erison)
 BUILD_ARTIFACT_EXTENSION :=
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -34,19 +34,19 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 all: main-build
 
 # Main-build Target
-main-build: TPF---Hoppity-2da
+main-build: TPF\ Final\ -\ Hoppity\ (Alexander\ &\ Erison)
 
 # Tool invocations
-TPF---Hoppity-2da: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+TPF\ Final\ -\ Hoppity\ (Alexander\ &\ Erison): $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C Linker'
-	gcc  -o "TPF---Hoppity-2da" $(OBJS) $(USER_OBJS) $(LIBS) -lgtk-3 -lm -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+	gcc  -o "TPF Final - Hoppity (Alexander & Erison)" $(OBJS) $(USER_OBJS) $(LIBS) -lgtk-3 -lm -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -lharfbuzz -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TPF---Hoppity-2da
+	-$(RM) TPF\\ Final\\ -\\ Hoppity\\ (Alexander\\ &\\ Erison)
 	-@echo ' '
 
 .PHONY: all clean dependents main-build

@@ -14,7 +14,7 @@
             <property name="height-request">623</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/FondoDelTableroCheto.jpg</property>
+            <property name="pixbuf">IMG/FONDO.jpg</property>
           </object>
         </child>
         <child>
@@ -1448,7 +1448,7 @@
                         <property name="label" translatable="yes">Nombre del jugador (ficha negra)</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
-                          <attribute name="foreground" value="#ffffffffffff"/>
+                          <attribute name="foreground" value="#e5e5a5a50a0a"/>
                         </attributes>
                       </object>
                       <packing>
@@ -1482,7 +1482,7 @@ label</property>
  Nombre del jugador (ficha blanca)</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
-                          <attribute name="foreground" value="#ffffffffffff"/>
+                          <attribute name="foreground" value="#e5e5a5a50a0a"/>
                         </attributes>
                       </object>
                       <packing>
@@ -1517,7 +1517,7 @@ label
 Turno actual</property>
                         <attributes>
                           <attribute name="font-desc" value="Sans Bold 10"/>
-                          <attribute name="foreground" value="#ffffffffffff"/>
+                          <attribute name="foreground" value="#e5e5a5a50a0a"/>
                         </attributes>
                       </object>
                       <packing>
@@ -1551,7 +1551,7 @@ label</property>
 
 </property>
                         <attributes>
-                          <attribute name="font-desc" value="NATS 12"/>
+                          <attribute name="font-desc" value="NATS Bold 12"/>
                           <attribute name="foreground" value="#ffffffffffff"/>
                         </attributes>
                       </object>
@@ -1639,10 +1639,9 @@ label</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">APRIETE 1 VEZ PARA PODER JUGAR
-    (si el turno es de la computadora)</property>
+                            <property name="label" translatable="yes">ARRANCAR</property>
                             <attributes>
-                              <attribute name="font-desc" value="Dyuthi Bold Italic 12"/>
+                              <attribute name="font-desc" value="Dyuthi Bold Italic 15"/>
                               <attribute name="foreground" value="#3d3d38384646"/>
                             </attributes>
                           </object>
@@ -1663,7 +1662,7 @@ label</property>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">PASAR TURNO</property>
+                            <property name="label" translatable="yes">JUGAR</property>
                             <attributes>
                               <attribute name="font-desc" value="Dyuthi Bold Italic 15"/>
                             </attributes>
@@ -1674,6 +1673,22 @@ label</property>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">11</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">
+El enemigo movió una ficha de:</property>
+                        <attributes>
+                          <attribute name="foreground" value="#ffffffffffff"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">12</property>
                       </packing>
                     </child>
                     <child>
@@ -1689,7 +1704,7 @@ label</property>
                       <packing>
                         <property name="expand">False</property>
                         <property name="fill">True</property>
-                        <property name="position">12</property>
+                        <property name="position">13</property>
                       </packing>
                     </child>
                   </object>
@@ -1864,21 +1879,20 @@ label</property>
             <property name="height-request">147</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">                  El objetivo del juego consiste en transferir 
-                   la totalidad de las fichas propias al campo 
-                            contrario en la esquina opuesta.
-     Cada turno, un jugador mueve una sola ficha a una casilla
-                   adyacente, o salta sobre una o más fichas
-                 (ya sea propio o del oponente) en secuencia.
+            <property name="label" translatable="yes">                    El objetivo del juego consiste en transferir 
+                     la totalidad de las fichas propias al campo 
+                              contrario en la esquina opuesta.
+       Cada turno, un jugador mueve una sola ficha a una casilla
+                     adyacente, o salta sobre una o más fichas
+                   (ya sea propio o del oponente) en secuencia.
 
                                              IMPORTANTE!
        En caso de no poder mover ninguna ficha, apriete el botón
-     " APRIETE 1 VEZ PARA PODER JUGAR " al apretar la maquina
-         hará el movimiento con su ficha, luego mueva su ficha y 
-	      finalmente apriete "PASAR TURNO" para alternar
-		          los turnos y jugar tranquilamente.</property>
+     " ARRANCAR " al apretar la maquina hará el movimiento con 
+su ficha, luego mueva su ficha y finalmente apriete "JUGAR" para
+                     alternar los turnos y jugar tranquilamente.</property>
             <attributes>
-              <attribute name="font-desc" value="Dyuthi Bold 13"/>
+              <attribute name="font-desc" value="Dyuthi 13"/>
               <attribute name="foreground" value="#ffffffffffff"/>
             </attributes>
           </object>
@@ -1931,7 +1945,7 @@ label</property>
             <property name="label" translatable="yes">¡ BIENVENIDO AL JUEGO !</property>
             <attributes>
               <attribute name="font-desc" value="Dyuthi Bold 13"/>
-              <attribute name="foreground" value="#dededddddada"/>
+              <attribute name="foreground" value="#c0c0bfbfbcbc"/>
             </attributes>
           </object>
           <packing>
@@ -1984,7 +1998,7 @@ label</property>
           </object>
           <packing>
             <property name="x">221</property>
-            <property name="y">199</property>
+            <property name="y">219</property>
           </packing>
         </child>
         <child>
@@ -1993,11 +2007,11 @@ label</property>
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/calavera2.png</property>
+            <property name="pixbuf">IMG/rayas2.png</property>
           </object>
           <packing>
             <property name="x">22</property>
-            <property name="y">30</property>
+            <property name="y">41</property>
           </packing>
         </child>
         <child>
@@ -2006,11 +2020,11 @@ label</property>
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/calavera1.png</property>
+            <property name="pixbuf">IMG/rayas1.png</property>
           </object>
           <packing>
             <property name="x">500</property>
-            <property name="y">30</property>
+            <property name="y">41</property>
           </packing>
         </child>
         <child>
@@ -2034,7 +2048,7 @@ label</property>
           </object>
           <packing>
             <property name="x">221</property>
-            <property name="y">253</property>
+            <property name="y">255</property>
           </packing>
         </child>
         <child>
@@ -2047,6 +2061,31 @@ label</property>
           <packing>
             <property name="x">-32</property>
             <property name="y">193</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="boton_instrucciones">
+            <property name="use-action-appearance">True</property>
+            <property name="width-request">177</property>
+            <property name="height-request">34</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">INSTRUCCIONES</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi Bold Italic 15"/>
+                  <attribute name="foreground" value="#efc8132e132e"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">221</property>
+            <property name="y">183</property>
           </packing>
         </child>
       </object>
@@ -2064,7 +2103,7 @@ label</property>
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoCreditos2.jpg</property>
+            <property name="pixbuf">IMG/fondoCreditos3.jpg</property>
           </object>
         </child>
         <child>
@@ -2092,7 +2131,7 @@ label</property>
 Este programa viene SIN NINGUNA GARANTÍA
               De libre distribución y uso.</property>
             <attributes>
-              <attribute name="font-desc" value="Dyuthi Bold 12"/>
+              <attribute name="font-desc" value="Dyuthi 12"/>
               <attribute name="foreground" value="#f6f6f5f5f4f4"/>
             </attributes>
           </object>
@@ -2217,7 +2256,7 @@ Este programa viene SIN NINGUNA GARANTÍA
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoElegir.jpg</property>
+            <property name="pixbuf">IMG/fondoElegir2.jpg</property>
           </object>
         </child>
         <child>
@@ -2240,7 +2279,7 @@ Este programa viene SIN NINGUNA GARANTÍA
                     <property name="label" translatable="yes">ELIGA TURNO</property>
                     <attributes>
                       <attribute name="font-desc" value="Dyuthi Bold 12"/>
-                      <attribute name="foreground" value="#ffffffffffff"/>
+                      <attribute name="foreground" value="#e5e5a5a50a0a"/>
                     </attributes>
                   </object>
                   <packing>
@@ -2337,7 +2376,7 @@ Este programa viene SIN NINGUNA GARANTÍA
                     <property name="label" translatable="yes">COLOR DE FICHA</property>
                     <attributes>
                       <attribute name="font-desc" value="Dyuthi Bold 12"/>
-                      <attribute name="foreground" value="#ffffffffffff"/>
+                      <attribute name="foreground" value="#e5e5a5a50a0a"/>
                     </attributes>
                   </object>
                   <packing>
@@ -2593,8 +2632,8 @@ Este programa viene SIN NINGUNA GARANTÍA
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Modo de juego:</property>
                 <attributes>
-                  <attribute name="font-desc" value="Dyuthi Bold Italic 11"/>
-                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
+                  <attribute name="font-desc" value="Dyuthi Bold 11"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -2624,8 +2663,8 @@ Este programa viene SIN NINGUNA GARANTÍA
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Turno:</property>
                 <attributes>
-                  <attribute name="font-desc" value="Dyuthi Bold Italic 11"/>
-                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
+                  <attribute name="font-desc" value="Dyuthi Bold 11"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -2655,8 +2694,8 @@ Este programa viene SIN NINGUNA GARANTÍA
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Color de ficha:</property>
                 <attributes>
-                  <attribute name="font-desc" value="Dyuthi Bold Italic 11"/>
-                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
+                  <attribute name="font-desc" value="Dyuthi Bold 11"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -2710,7 +2749,7 @@ Este programa viene SIN NINGUNA GARANTÍA
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoEstadisticas.jpg</property>
+            <property name="pixbuf">IMG/fondoEstadisticas2.jpg</property>
           </object>
         </child>
         <child>
@@ -2728,7 +2767,7 @@ Este programa viene SIN NINGUNA GARANTÍA
 </property>
                 <attributes>
                   <attribute name="font-desc" value="Dyuthi Bold 20"/>
-                  <attribute name="foreground" value="#ffffffffffff"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -3004,7 +3043,7 @@ Este programa viene SIN NINGUNA GARANTÍA
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoIniciar.jpg</property>
+            <property name="pixbuf">IMG/fondoIniciar2.jpg</property>
           </object>
         </child>
         <child>
@@ -3024,7 +3063,7 @@ Este programa viene SIN NINGUNA GARANTÍA
 </property>
                 <attributes>
                   <attribute name="font-desc" value="Dyuthi Bold 13"/>
-                  <attribute name="foreground" value="#ffffffffffff"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -3121,6 +3160,301 @@ Este programa viene SIN NINGUNA GARANTÍA
       </object>
     </child>
   </object>
+  <object class="GtkWindow" id="ventana_instrucciones">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkFixed">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkImage">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">IMG/fondoIntruc5.jpg</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="boton_cerrar_instrucciones">
+            <property name="width-request">93</property>
+            <property name="height-request">34</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">CERRAR</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi Bold Italic 15"/>
+                  <attribute name="foreground" value="#efc8132e132e"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">654</property>
+            <property name="y">571</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="width-request">747</property>
+            <property name="height-request">313</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes"> Objetivo del juego:
+</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi 12"/>
+                  <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">El objetivo de Hoppity es mover todas tus fichas desde tu campamento inicial hasta el campamento inicial del oponente, 
+                       ocupando sus espacios.  Puedes hacerlo saltando sobre tus propias fichas o las de tu oponente.
+
+    Inicialmente cada jugador tiene 19 fichas, que estan colocadas en las casillas de su campo inicial en forma triangular.
+</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Movimientos:
+</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi 12"/>
+                  <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">- Las piezas se pueden mover en cualquier dirección a través de las líneas de la cuadrícula a una casilla adyacente que
+    esté vacía.
+- También puedes saltar sobre tus propias fichas para avanzar más rápido, y los saltos se pueden realizar en cualquier 
+    dirección.
+- Puedes saltar sobre las fichas del oponente, siempre que haya una celda vacía justo después de la pieza saltada.
+- También podrás realizar saltos multiples sobre tus propias fichas como tambien sobre las fichas enemigas.
+</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Fin del juego:
+</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi 12"/>
+                  <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">El juego termina cuando un jugador logra trasladar todas  sus piezas al campo inicial del oponente. 
+                                                    El jugador que complete esta tarea primero es el ganador.</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="width-request">747</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Vista del tablero 
+</property>
+                <attributes>
+                  <attribute name="font-desc" value="Dyuthi 15"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Inicio de la partida</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Dyuthi 13"/>
+                      <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Durante la partida</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Dyuthi 13"/>
+                      <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Fin de la partida ( gano negras )</property>
+                    <attributes>
+                      <attribute name="font-desc" value="Dyuthi 13"/>
+                      <attribute name="foreground" value="#f9f9f0f06b6b"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="pixbuf">IMG/Inicio de la partida.png</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="pixbuf">IMG/Durante la Partida.png</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="pixbuf">IMG/Partida finalizada.png</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="y">337</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="ventana_modo">
     <property name="can-focus">False</property>
     <child>
@@ -3133,7 +3467,7 @@ Este programa viene SIN NINGUNA GARANTÍA
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoOpcion.jpg</property>
+            <property name="pixbuf">IMG/fondoOpcion2.jpg</property>
           </object>
         </child>
         <child>
@@ -3153,7 +3487,7 @@ ELIGA EL MODO DE JUEGO
 </property>
                 <attributes>
                   <attribute name="font-desc" value="Dyuthi Bold 13"/>
-                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
+                  <attribute name="foreground" value="#e5e5a5a50a0a"/>
                 </attributes>
               </object>
               <packing>
@@ -3262,7 +3596,7 @@ ELIGA EL MODO DE JUEGO
             <property name="height-request">80</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="pixbuf">IMG/fondoNombres.jpg</property>
+            <property name="pixbuf">IMG/fondoNombres2.jpg</property>
           </object>
         </child>
         <child>
@@ -3271,32 +3605,15 @@ ELIGA EL MODO DE JUEGO
             <property name="height-request">40</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">NOMBRE DEL JUGADOR 1</property>
+            <property name="label" translatable="yes">NOMBRE DEL JUGADOR</property>
             <attributes>
               <attribute name="font-desc" value="Dyuthi Bold 13"/>
-              <attribute name="foreground" value="#f6f6f5f5f4f4"/>
+              <attribute name="foreground" value="#e5e5a5a50a0a"/>
             </attributes>
           </object>
           <packing>
             <property name="x">6</property>
-            <property name="y">5</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="width-request">185</property>
-            <property name="height-request">38</property>
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="label" translatable="yes">NOMBRE DEL JUGADOR 2</property>
-            <attributes>
-              <attribute name="font-desc" value="Dyuthi Bold 13"/>
-              <attribute name="foreground" value="#f6f6f5f5f4f4"/>
-            </attributes>
-          </object>
-          <packing>
-            <property name="x">6</property>
-            <property name="y">40</property>
+            <property name="y">28</property>
           </packing>
         </child>
         <child>
@@ -3312,23 +3629,7 @@ ELIGA EL MODO DE JUEGO
           </object>
           <packing>
             <property name="x">211</property>
-            <property name="y">9</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="entry_aleatorio_jugador2">
-            <property name="width-request">184</property>
-            <property name="height-request">28</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="secondary-icon-name">face-smile-symbolic</property>
-            <property name="secondary-icon-tooltip-text" translatable="yes">Insertar emoticono</property>
-            <property name="secondary-icon-tooltip-markup" translatable="yes">Insertar emoticono</property>
-            <property name="show-emoji-icon">True</property>
-          </object>
-          <packing>
-            <property name="x">211</property>
-            <property name="y">42</property>
+            <property name="y">30</property>
           </packing>
         </child>
         <child>
@@ -3391,7 +3692,7 @@ ELIGA EL MODO DE JUEGO
         <child>
           <object class="GtkBox">
             <property name="width-request">498</property>
-            <property name="height-request">245</property>
+            <property name="height-request">332</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="orientation">vertical</property>
@@ -3399,11 +3700,10 @@ ELIGA EL MODO DE JUEGO
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">
-¡VICTORIA! </property>
+                <property name="label" translatable="yes">¡VICTORIA!</property>
                 <attributes>
-                  <attribute name="font-desc" value="Dyuthi Bold 30"/>
-                  <attribute name="foreground" value="#ffffffffffff"/>
+                  <attribute name="font-desc" value="Sans Bold 25"/>
+                  <attribute name="foreground" value="#efc8132e132e"/>
                 </attributes>
               </object>
               <packing>
@@ -3417,11 +3717,10 @@ ELIGA EL MODO DE JUEGO
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">
-
-FELICITACIONES!</property>
+Felicitaciones</property>
                 <attributes>
-                  <attribute name="font-desc" value="Sans Bold 10"/>
-                  <attribute name="foreground" value="#ffffffffffff"/>
+                  <attribute name="font-desc" value="Sans Bold 15"/>
+                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
                 </attributes>
               </object>
               <packing>
@@ -3437,6 +3736,7 @@ FELICITACIONES!</property>
                 <property name="label" translatable="yes">
 label</property>
                 <attributes>
+                  <attribute name="font-desc" value="NATS 12"/>
                   <attribute name="foreground" value="#ffffffffffff"/>
                 </attributes>
               </object>
@@ -3451,11 +3751,11 @@ label</property>
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">
-HAS GANADO!
+Has ganado!
 </property>
                 <attributes>
-                  <attribute name="font-desc" value="Sans Bold 10"/>
-                  <attribute name="foreground" value="#ffffffffffff"/>
+                  <attribute name="font-desc" value="Sans Bold 15"/>
+                  <attribute name="foreground" value="#f6f6f5f5f4f4"/>
                 </attributes>
               </object>
               <packing>
@@ -3465,10 +3765,28 @@ HAS GANADO!
               </packing>
             </child>
             <child>
-              <object class="GtkImage">
+              <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="pixbuf">IMG/32489778.jpg</property>
+                <property name="homogeneous">True</property>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="pixbuf">IMG/finoSeñores.jpg</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -3500,6 +3818,32 @@ HAS GANADO!
           <packing>
             <property name="x">398</property>
             <property name="y">298</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">IMG/Rigby.png</property>
+          </object>
+          <packing>
+            <property name="x">101</property>
+            <property name="y">90</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage">
+            <property name="width-request">100</property>
+            <property name="height-request">115</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">IMG/mordecai.png</property>
+          </object>
+          <packing>
+            <property name="x">320</property>
+            <property name="y">55</property>
           </packing>
         </child>
       </object>

@@ -57,7 +57,7 @@ void actualizarEstadisticas(const char *nombre, int *jugadas, int *ganadas, int 
         fprintf(temporal, "%-10s\t\t\t\t\t\t%d\t\t\t\t\t\t\t%d\t\t\t\t\t\t\t%d\n", jugadores[i].nombre, jugadores[i].partidas_jugadas, jugadores[i].partidas_ganadas, jugadores[i].partidas_perdidas);
 
     }
-// \t\t\t\t\t\t
+
     fclose(temporal);
 
 

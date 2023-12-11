@@ -8,7 +8,6 @@
 
 //#define N 16
 
-
 #define FICHA_NEGRO "IMG/bola-negra.png"
 
 #define FICHA_BLANCO "IMG/bola-blanca.png"
@@ -28,6 +27,7 @@ GtkWidget *ventana4;
 GtkWidget *ventana5;
 GtkWidget *ventana6;
 GtkWidget *ventana7;
+GtkWidget *ventana_instrucciones;
 GtkWidget *tablero_hoppity;
 GtkWidget *ventana_estadisticas;
 GtkWidget *eventbox_tablero;
@@ -69,6 +69,8 @@ GtkWidget *boton_juego_nuevo;
 GtkWidget *boton_estadisticas;
 GtkWidget *cerrarEstadisticas;
 GtkWidget *boton_cerrar_victoria;
+GtkWidget *boton_instrucciones;
+GtkWidget *boton_cerrar_instrucciones;
 
 // Del tablero nuevo (por imagenes)
 GtkWidget *boton_tablero_atras;
@@ -129,7 +131,7 @@ int x1 = 0, x2 = 0, z1 = 0, z2 = 0;
 int fila_actualM=0, fila_nuevaM=0, colum_actualM=0, colum_nuevaM=0;
 int Turno = 0, Color = 0, bandera = 0, turnoJugada = 1, bandera2 = 0, bandera3 = 0, bandera4 = 1, turno1 = 5, turno2 = 0, cont = 0, bandera5 = 0, bandera6 = 0
 ,var1 = 0, puerta = 0, puerta2 = 1, puerta3 = 1, FichaColor = 0, puerta4 = 0;
-int reinicio = 0, aux2 = 0;
+int reinicio = 0, aux2 = 0, cont1 = 0; // de la IA
 int bandNombre1 = 0, bandNombre2 = 0, ganoNegras = 0, ganoBlancas = 0;
 
 /*
@@ -234,24 +236,24 @@ void guardarEstadisticas() {
 		}
 
     } else { // totalmente aleatorio (opcion "ALEATORIO")
-    	if (ganoNegras != 0 && ((Turno == 1 && Color == 1) || (Turno == 2 && Color == 2))) {
+    	if (ganoNegras != 0 && cont1 != 1 && ((Turno == 1 && Color == 1) || (Turno == 2 && Color == 2)) ) {
 			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador1)));
 			jugador.partidas_jugadas++;
 			jugador.partidas_ganadas++;
 
-		} else if (ganoNegras == 0 && ((Turno == 1 && Color == 1) || (Turno == 2 && Color == 2))){
+		} else if (ganoNegras == 0 && cont1 == 1 && ((Turno == 1 && Color == 1) || (Turno == 2 && Color == 2)) ){
 			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador1)));
 			jugador.partidas_jugadas++;
 			jugador.partidas_perdidas++;
 		}
 
-    	if (ganoBlancas != 0 && ((Turno == 1 && Color == 2) || (Turno == 2 && Color == 1))) {
-			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador2)));
+    	if (ganoBlancas != 0 && cont1 != 1 &&((Turno == 1 && Color == 2) || (Turno == 2 && Color == 1)) ) {
+			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador1)));
 			jugador.partidas_jugadas++;
 			jugador.partidas_ganadas++;
 
-		} else if (ganoBlancas == 0 && ((Turno == 1 && Color == 2) || (Turno == 2 && Color == 1))){
-			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador2)));
+		} else if (ganoBlancas == 0 && cont1 == 1 && ((Turno == 1 && Color == 2) || (Turno == 2 && Color == 1))){
+			sprintf(jugador.nombre, "%s", gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador1)));
 			jugador.partidas_jugadas++;
 			jugador.partidas_perdidas++;
 		}
@@ -263,7 +265,7 @@ void guardarEstadisticas() {
 /* acá se lee el archivo y se guarda el contenido en un vector "vectorContenido" y este se carga en un label
 para poder mostrar en ventana la informacion */
 void verEstadisticas() {
-	 // Abrir el archivo en modo lectura ("r")
+	 // Abrimos el archivo en modo lectura
 	    FILE *archivo = fopen("Estadisticas.txt", "r");
 
 	    // Crear un vector dinámico para almacenar el contenido del archivo
@@ -278,19 +280,16 @@ void verEstadisticas() {
 	        vectorContenido[tamanoVector++] = caracter;
 	    }
 
-	    // Asegurar que el vector tenga un carácter nulo al final
+	    // Asegura que el vector tenga un carácter nulo al final
 	    vectorContenido = realloc(vectorContenido, tamanoVector + 1);
 	    vectorContenido[tamanoVector] = '\0';
 
-	    // Imprimir el contenido del vector (que es el contenido del archivo)
-	    //printf("\nContenido del archivo:\n%s\n", vectorContenido);
-
 	    gtk_label_set_text(GTK_LABEL(label_info), vectorContenido);
 
-	    // Liberar la memoria del vector
+	    // Libera la memoria del vector
 	   	 free(vectorContenido);
 
-	    // Cerrar el archivo
+	    // Cerramos el archivo
 	    fclose(archivo);
 }
 
@@ -313,12 +312,19 @@ void revision_ganador () {
 
 		} else {
 			// imprime el nombre del ganador en la ventana de "victoria"
-			gchar *temp3 = g_strdup_printf("%s", stringJugador_aleatorio1);
-			gtk_label_set_text(GTK_LABEL(nombre_ganador), temp3);
-			g_free(temp3);
-			ganoNegras++;      //bien
-			ganoBlancas = 0;
-			guardarEstadisticas();
+			if (cont1 != 1) {
+				gchar *temp3 = g_strdup_printf("%s", stringJugador_aleatorio1);
+				gtk_label_set_text(GTK_LABEL(nombre_ganador), temp3);
+				g_free(temp3);
+				ganoNegras++;      //bien
+				ganoBlancas = 0;
+				guardarEstadisticas();
+			} else {
+				gtk_label_set_text(GTK_LABEL(nombre_ganador), "Computadora");
+				ganoNegras++;      //bien
+				ganoBlancas = 0;
+				guardarEstadisticas();
+			}
 
 		}
 		gtk_widget_show_all (ventana7);
@@ -336,12 +342,19 @@ void revision_ganador () {
 
 		} else {
 			// imprime el nombre del ganador en la ventana de "victoria"
-			gchar *temp4 = g_strdup_printf("%s", stringJugador_aleatorio2);
-			gtk_label_set_text(GTK_LABEL(nombre_ganador), temp4);
-			g_free(temp4);
-			ganoBlancas++;
-			ganoNegras = 0;
-			guardarEstadisticas();
+			if (cont1 != 1) {
+				gchar *temp4 = g_strdup_printf("%s", stringJugador_aleatorio1);
+				gtk_label_set_text(GTK_LABEL(nombre_ganador), temp4);
+				g_free(temp4);
+				ganoBlancas++;
+				ganoNegras = 0;
+				guardarEstadisticas();
+			} else { // Gano la Compu (imprime solo este nombre cuando se elige totalmente aleatorio/caso aleatorio)
+				gtk_label_set_text(GTK_LABEL(nombre_ganador), "Computadora");
+				ganoBlancas++;
+				ganoNegras = 0;
+				guardarEstadisticas();
+			}
 
 		}
 
@@ -364,86 +377,99 @@ void imprimirTurnoActualTablero () {
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador2);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio2);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), "Computadora");
 		}
 	} else if (turno2 == 2){
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador1);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio1);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), "Computadora");
 		}
 	} else if (turno2 == 3) {
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador2);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio2);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio1);
 		}
 	}
 }
 
 
+
 /*
- Al apretar el boton "pasar turno" entra acá para que la maquina haga su jugada
+Al apretar el boton "pasar turno" entra acá para que la maquina haga su jugada
 */
 void aprieta_pasar_turno () {
-	 //movimiento maquina
-	if (var1 == 1) {
-		turno1 = 1;
-		imprimirTurnoActualTablero ();
-		// entra en esta dos funciones, hace las revision para el movimiento.
-		juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2);
-		solucionMov2fichas();
+	if (bandera2 == 0) { // esto, se hace cero despues de darle al boton "apriete 1 vez para empezar", si es turno de maquina para evitar errores
+		 //movimiento maquina
+		if (var1 == 1) {
+			turno1 = 1;
+			imprimirTurnoActualTablero ();
+			// entra en esta dos funciones, hace las revision para el movimiento.
+			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2, &cont1);
+			solucionMov2fichas();
 
-		// si son movimientos permitidos, se hacen los cambios...
-		tablero[fila_nuevaM][colum_nuevaM] = 'B';
-		gtk_image_set_from_file(GTK_IMAGE(gtk_grid_get_child_at(GTK_GRID(grid_tablero),y,x)), FICHA_BLANCO);
-		tablero[fila_actualM][colum_actualM] = '.';
+			// si son movimientos permitidos, se hacen los cambios...
+			tablero[fila_nuevaM][colum_nuevaM] = 'B';
+			gtk_image_set_from_file(GTK_IMAGE(gtk_grid_get_child_at(GTK_GRID(grid_tablero),y,x)), FICHA_BLANCO);
+			tablero[fila_actualM][colum_actualM] = '.';
 
-		actualizacionDeTablero();
-		condicionQuienGana (tablero, &cont, &bandera5);
-		revision_ganador(); //revisa esta funcion y si se cumple, muestra la ventana de "VICTORIA"
+			actualizacionDeTablero();
+			condicionQuienGana (tablero, &cont, &bandera5);
+			revision_ganador(); //revisa esta funcion y si se cumple, muestra la ventana de "VICTORIA"
+		}
+		else if (var1 == 2) {
+			turno2 = 2;
+			imprimirTurnoActualTablero ();
+			// entra en esta dos funciones, hace las revision para el movimiento.
+			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2, &cont1);
+			solucionMov2fichas();
+
+			tablero[fila_nuevaM][colum_nuevaM] = 'N';
+			gtk_image_set_from_file(GTK_IMAGE(gtk_grid_get_child_at(GTK_GRID(grid_tablero),y,x)), FICHA_NEGRO);
+			tablero[fila_actualM][colum_actualM] = '.';
+
+			actualizacionDeTablero();
+			condicionQuienGana (tablero, &cont, &bandera5);
+			revision_ganador(); //revisa esta funcion y si se cumple, muestra la ventana de "VICTORIA"
+
+		}
+
+		// Incrementamos, esto solamente para que coincida con los numeros que se coloco en el tablero, ya que este empieza desde 1 y no desde 0.
+		fila_actualM++;
+		colum_actualM++;
+		fila_nuevaM++;
+		colum_nuevaM++;
+		// para mostrar en mensaje los movimientos que ha hecho la maquina.
+		char mensaje[17];
+		mensaje[0] = '(';
+		mensaje[1] = fila_actualM / 10 + '0'; // aca se guarda la parte entera
+		mensaje[2] = fila_actualM % 10 + '0'; // aca se guarda la parte decimal
+		mensaje[3] = ',';
+		mensaje[4] = colum_actualM / 10 + '0';
+		mensaje[5] = colum_actualM % 10 + '0';
+		mensaje[6] = ')';
+		mensaje[7] = ' ';
+		mensaje[8] = 'a';
+		mensaje[9] = ' ';
+		mensaje[10] = '(';
+		mensaje[11] = fila_nuevaM / 10 + '0';
+		mensaje[12] = fila_nuevaM % 10 + '0';
+		mensaje[13] = ',';
+		mensaje[14] = colum_nuevaM / 10 + '0';
+		mensaje[15] = colum_nuevaM % 10 + '0';
+		mensaje[16] = ')';
+		mensaje[17] = '\0';
+
+		gchar *Mensaje = g_strdup_printf("%s", mensaje);
+		// el Mensaje se carga el "labelMovMaquina" para que se muestre el ventana los movimientos que realizo la maquina.
+		gtk_label_set_text(GTK_LABEL(labelMovMaquina), Mensaje);
+		g_free(Mensaje);
+
+		var1 = 0; // ceramos de nuevo, para que el boton no funcione de seguido, solo debe funcionar despues de que termine el turno el humano
+		puerta2 = 1; //habilitamos de vuelta para que el humano haga otro mov permitido
+		puerta3 = 1; // habilitamos para volver a hacer mov adyacentes (esto se puso para que al hacer un salto no vuelva a hacer un mov adyacente)
 	}
-	else if (var1 == 2) {
-		turno2 = 2;
-		imprimirTurnoActualTablero ();
-		// entra en esta dos funciones, hace las revision para el movimiento.
-		juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2);
-		solucionMov2fichas();
-
-		tablero[fila_nuevaM][colum_nuevaM] = 'N';
-		gtk_image_set_from_file(GTK_IMAGE(gtk_grid_get_child_at(GTK_GRID(grid_tablero),y,x)), FICHA_NEGRO);
-		tablero[fila_actualM][colum_actualM] = '.';
-
-		actualizacionDeTablero();
-		condicionQuienGana (tablero, &cont, &bandera5);
-		revision_ganador(); //revisa esta funcion y si se cumple, muestra la ventana de "VICTORIA"
-
-	}
-
-	char mensaje[13];
-	mensaje[0]= '(';
-	mensaje[1]= fila_actualM + '0';
-	mensaje[2] = ',';
-	mensaje[3] = colum_nuevaM + '0';
-	mensaje[4] = ')';
-	mensaje[5] = ' ';
-	mensaje[6]= 'a';
-	mensaje[7] = ' ';
-	mensaje[8]= '(';
-	mensaje[9] = fila_nuevaM + '0';
-	mensaje[10] = ',';
-	mensaje[11] = colum_nuevaM + '0';
-	mensaje[12] = ')';
-	mensaje[13] = '\0';
-
-	gchar *Mensaje = g_strdup_printf("%s", mensaje);
-
-	gtk_label_set_text(GTK_LABEL(labelMovMaquina), Mensaje);
-	g_free(Mensaje);
-
-	var1 = 0; // ceramos de nuevo, para que el boton no funcione de seguido, solo debe funcionar despues de que termine el turno el humano
-	puerta2 = 1; //habilitamos de vuelta para que el humano haga otro mov permitido
-	puerta3 = 1; // habilitamos para volver a hacer mov adyacentes (esto se puso para que al hacer un salto no vuelva a hacer un mov adyacente)
 }
 
 
@@ -767,7 +793,7 @@ void aprieta_juega_compu (GtkWidget *event_box, GdkEventButton *event, gpointer 
 		if (bandera3 == 0) {
 			// movimiento maquina negras
 
-			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2);
+			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2, &cont1);
 			solucionMov2fichas();
 
 			tablero[fila_nuevaM][colum_nuevaM] = 'N';
@@ -784,7 +810,7 @@ void aprieta_juega_compu (GtkWidget *event_box, GdkEventButton *event, gpointer 
 		else if (bandera3 == 1) {  // si bandera == 1, maquina jugara con blancas (el valor de bandera se cambia cuando se selecciona color de ficha)
 			// movimiento maquina blancas
 
-			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2);
+			juegaMaquinaIA (tablero, &fila_actualM, &colum_actualM, &fila_nuevaM, &colum_nuevaM, &FichaColor, &reinicio, &aux2, &cont1);
 			solucionMov2fichas();
 
 			tablero[fila_nuevaM][colum_nuevaM] = 'B';
@@ -863,7 +889,6 @@ void aprieta_elegir_ventana1(GtkWidget *event_box, GdkEventButton *event, gpoint
 
 
 // arreglar para que imprima bien los turnos actuales
-
 void imprimirTurnoActual () {
 	if (Turno == 1 && Color == 1) {
 		if (puerta4 == 1){
@@ -875,22 +900,23 @@ void imprimirTurnoActual () {
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador2);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio2);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio1);
 		}
 	} else if (Turno == 2 && Color == 1) {
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador1);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio1);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), "Computadora");
 		}
 	} else if (Turno == 2 && Color == 2) {
 		if (puerta4 == 1){
 			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador2);
 		} else {
-			gtk_label_set_text(GTK_LABEL(turno_jugador), stringJugador_aleatorio2);
+			gtk_label_set_text(GTK_LABEL(turno_jugador), "Computadora");
 		}
 	}
 }
+
 
 
 
@@ -925,31 +951,32 @@ void aprieta_aleatorio (GtkWidget *event_box, GdkEventButton *event, gpointer da
 void aprieta_listo_ventana6 (GtkWidget *event_box, GdkEventButton *event, gpointer data)
 {
 	strncpy (stringJugador_aleatorio1, gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador1)), 15); // guardamos en el puntero lo que se introduce por teclado
-	strncpy (stringJugador_aleatorio2, gtk_entry_get_text(GTK_ENTRY(entry_aleatorio_jugador2)), 15);
 
 	// en caso de no ingresar ningun nombre...
 	if (strlen(stringJugador_aleatorio1) == 0) {
-			//strcpy(stringJugador_aleatorio1, "Jugador Negro");
 		bandNombre1 = 0;
 	} else {bandNombre1 = 1;}
 
-	if (strlen(stringJugador_aleatorio2) == 0){
-		//strcpy(stringJugador_aleatorio2, "Jugador Blanco");
-		bandNombre2 = 0;
-	} else {bandNombre2 = 1;}
+	if ((Turno == 1 && Color == 1) || (Turno == 2 && Color == 2)) {
+		gchar *temp3 = g_strdup_printf("%s", stringJugador_aleatorio1);
+		gtk_label_set_text(GTK_LABEL(jugador_fichanegra), temp3);
+		g_free(temp3);
 
-	gchar *temp3 = g_strdup_printf("%s", stringJugador_aleatorio1);
-	gtk_label_set_text(GTK_LABEL(jugador_fichanegra), temp3);
-	g_free(temp3);
+		gtk_label_set_text(GTK_LABEL(jugador_fichablanca), "Computadora");
 
-	gchar *temp4 = g_strdup_printf("%s", stringJugador_aleatorio2);
-	gtk_label_set_text(GTK_LABEL(jugador_fichablanca), temp4);
-	g_free(temp4);
+	} else if ((Turno == 2 && Color == 1) || (Turno == 1 && Color == 2)) {
+		gchar *temp4 = g_strdup_printf("%s", stringJugador_aleatorio1);
+		gtk_label_set_text(GTK_LABEL(jugador_fichablanca), temp4);
+		g_free(temp4);
+
+		gtk_label_set_text(GTK_LABEL(jugador_fichanegra), "Computadora");
+	}
+
 
 	bandera6 = 1; // para que entre en lo de revisionganador, y aparezca el nombre cuando aprieta aleatorio
 	puerta4 = 2; // para agregar los nombres cuando aprieta totalmente aleatorio y no "elegir"
 
-	if (bandNombre1 == 1 && bandNombre2 == 1) {
+	if (bandNombre1 == 1) {
 		 imprimirTurnoActual();
 		 if (reinicio == 0){
 			iniciartablero (tablero);
@@ -961,11 +988,13 @@ void aprieta_listo_ventana6 (GtkWidget *event_box, GdkEventButton *event, gpoint
 		 gtk_window_set_title (GTK_WINDOW (tablero_hoppity),"HOPPITY"); // Cambia titulo de la ventana.
 	}
 	else { // te muestra el texto si no se ingresaron datos...
-		gchar *error = g_strdup_printf("Error: Debes ingresar los nombres");
+		gchar *error = g_strdup_printf("Error: Ingrese un nombre");
 		gtk_label_set_text(GTK_LABEL(label_error_datos2), error);
 		g_free(error);
 	}
 }
+
+
 
 
 //al apretar boton humano aparece que se selecciono esa opcion e imprime abajo como la opcion elegida
@@ -1163,7 +1192,7 @@ void aprieta_juego_nuevo () {
 	fila_actualM=0, fila_nuevaM=0, colum_actualM=0, colum_nuevaM=0;
 	Turno = 0, Color = 0, bandera = 0, turnoJugada = 1, bandera2 = 0, bandera3 = 0, bandera4 = 1, turno1 = 5, turno2 = 0, cont = 0, bandera5 = 0, bandera6 = 0
 	,var1 = 0, puerta = 0, puerta2 = 1, puerta3 = 1, FichaColor = 0, puerta4 = 0;
-	bandNombre1 = 0, bandNombre2 = 0;
+	bandNombre1 = 0, bandNombre2 = 0, ganoNegras = 0, ganoBlancas = 0, cont1 = 0;
 	// esto para que no aparezcan las elecciones anteriores solamente...
 	char color[30] = {" "};
 	gchar *t1 = g_strdup_printf("%s", color);
@@ -1202,6 +1231,15 @@ void aprieta_boton_cerrarVictoria () {
 	gtk_widget_show_all (tablero_hoppity);
 }
 
+void aprieta_boton_instrucciones () {
+	gtk_widget_show_all (ventana_instrucciones);
+	gtk_window_set_title (GTK_WINDOW (ventana_instrucciones),"HOPPITY");
+}
+void aprieta_boton_cerrar_instrucciones () {
+	gtk_widget_hide (ventana_instrucciones);
+	gtk_widget_show_all (ventana);
+}
+
 
  int main (int argc, char *argv[]) {
 		//Inicializaciones
@@ -1235,6 +1273,7 @@ void aprieta_boton_cerrarVictoria () {
 	    ventana7 = GTK_WIDGET(gtk_builder_get_object(builder, "ventana_victoria"));
 	    fixed = GTK_WIDGET(gtk_builder_get_object(builder, "fixed"));
 	    ventana_estadisticas = GTK_WIDGET(gtk_builder_get_object(builder, "ventana_estadisticas"));
+	    ventana_instrucciones = GTK_WIDGET(gtk_builder_get_object(builder, "ventana_instrucciones"));
 
 
 	    gtk_window_set_title (GTK_WINDOW (ventana),"HOPPITY"); // Cambia titulo de la ventana.
@@ -1274,6 +1313,8 @@ void aprieta_boton_cerrarVictoria () {
 
 	    boton_inicia_compu = GTK_WIDGET(gtk_builder_get_object(builder, "boton_inicia_compu"));
 	    boton_juego_nuevo = GTK_WIDGET(gtk_builder_get_object(builder, "boton_juego_nuevo"));
+	    boton_instrucciones = GTK_WIDGET(gtk_builder_get_object(builder, "boton_instrucciones"));
+	    boton_cerrar_instrucciones = GTK_WIDGET(gtk_builder_get_object(builder, "boton_cerrar_instrucciones"));
 
 	    nombre_jugador_negro = GTK_WIDGET(gtk_builder_get_object(builder, "nombre_jugador_negro"));
 	    nombre_jugador_blanco = GTK_WIDGET(gtk_builder_get_object(builder, "nombre_jugador_blanco"));
@@ -1324,6 +1365,9 @@ void aprieta_boton_cerrarVictoria () {
 	    g_signal_connect(boton_bienvenida_credito,"button-press-event", G_CALLBACK(aprieta_creditos_ventana3), NULL);
 	    g_signal_connect(boton_cerrar_credito,"button-press-event", G_CALLBACK(aprieta_cerrar_ventana3), NULL);
 	    g_signal_connect(boton_credito,"button-press-event", G_CALLBACK(aprieta_creditos_ventana3), NULL);
+	    g_signal_connect(boton_instrucciones,"button-press-event", G_CALLBACK(aprieta_boton_instrucciones), NULL);
+	    g_signal_connect(boton_cerrar_instrucciones,"button-press-event", G_CALLBACK(aprieta_boton_cerrar_instrucciones), NULL);
+
 
 	    // ventana4
 	    g_signal_connect(boton_modo_atras,"button-press-event", G_CALLBACK(aprieta_atras_ventana4), NULL);

@@ -42,49 +42,6 @@ void iniciartablero (char tablero[N][N]) {
 	}
 }
 
-/*
-Por el momento la maquina entra aca para seleccionar las filas y columnas
-solamente aleatorio
-*/
-/*void aleatorioMaquina (int *fila_actual1, int *colum_actual1, int *fila_nueva1, int *colum_nueva1) {
-
-    *fila_actual1 = rand() % 16;       // Genera numeros aleatorios a partir del 1 hasta 16.
-    *colum_actual1 = rand() % 16;
-    *colum_nueva1 = rand() % 16;
-    *fila_nueva1 = rand() % 16;
-
-}*/
-
-/*
- Aca se revisa si las filas y columnas elegidas son correctas, sino vuelve a seleccionar
-*/
-/*void juegaMaquinaB (int *fila_actual1, int *colum_actual1, int *fila_nueva1, int *colum_nueva1, char tablero[N][N]) {
-
-	while ((tablero [*fila_actual1][*colum_actual1] != 'B') || (tablero [*fila_nueva1][*colum_nueva1] != '.')
-	 || (pow((*fila_nueva1 - *fila_actual1), 2) + pow((*colum_nueva1 - *colum_actual1), 2)) > 2)
-    {
-        *fila_actual1 = rand() % 16;       // Genera numeros aleatorios a partir del 1 hasta 16.
-        *colum_actual1 = rand() % 16;
-        *colum_nueva1 = rand() % 16;
-        *fila_nueva1 = rand() % 16;
-
-    }
-}
-*/
-
-/*void juegaMaquinaN (int *fila_actual1, int *colum_actual1, int *fila_nueva1, int *colum_nueva1, char tablero[N][N]) {
-
-    while ((tablero [*fila_actual1][*colum_actual1] != 'N') || (tablero [*fila_nueva1][*colum_nueva1] != '.')
-    || (pow((*fila_nueva1 - *fila_actual1), 2) + pow((*colum_nueva1 - *colum_actual1), 2)) > 2)   // en el calculo le puse que sea > 8 para que haga tambien los saltos
-    {
-        *fila_actual1 = rand() % 16;       // Genera numeros aleatorios a partir del 1 hasta 16.
-        *colum_actual1 = rand() % 16;
-        *colum_nueva1 = rand() % 16;
-        *fila_nueva1 = rand() % 16;
-
-    }
-}
-*/
 
 /*
 Esto se revisa constantemente, con cada movimiento que se haga.
@@ -168,47 +125,3 @@ void revisarMovimientosPosibles (int *x1, int *x2, int *z1, int *z2, int *puerta
 	}
 
 }
-
-// funcion peso
-
-/*void Peso (int peso[N][N]){
-   // peso[N][N];
-    int k=0;
-	for (int i = 0; i < 16; i++) {
-		for (int j = 0; j < 16; j++) {
-			if (i>j)//triangular inferior
-        		peso[i][j]=78;
-	            	else
-						peso[i][j]=100;
-			            }
-			        }
-
-		for (int i = 0; i < 16; i++) {
-				k=0;
-					for (int j = 0; j < 16; j++) {
-						if (i>j)//triangular inferior
-							            		k++;
-							            	else if (i<j)//triangular superior
-							            		peso[i][j]=peso[i][j]-(i+j)+(--k)-2;
-							            	else
-							            		peso[i][j] = peso[i][j]-(i+j)+20;
-			            }
-			        }
-			        int z=15, h=-1;
-		for (int i = 15; i ; i--) {
-						k=0; z--; h++;
-							for (int j = z; j+1 ; j--) {
-
-								peso[i][j] = peso[i][j] - k+h;
-								k=k+2;
-					            }
-					        }
-
-}*/
-
-
-
-
-
-
-

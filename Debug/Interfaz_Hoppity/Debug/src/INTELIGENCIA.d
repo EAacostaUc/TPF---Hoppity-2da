@@ -1,1 +1,0 @@
-src/INTELIGENCIA.o: ../src/INTELIGENCIA.c

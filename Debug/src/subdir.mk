@@ -7,21 +7,18 @@ C_SRCS += \
 ../src/Estadisticas.c \
 ../src/FuncionesHoppity.c \
 ../src/INTELIGENCIA.c \
-../src/Inteligencia.c \
 ../src/Interfaz_Hoppity.c 
 
 C_DEPS += \
 ./src/Estadisticas.d \
 ./src/FuncionesHoppity.d \
 ./src/INTELIGENCIA.d \
-./src/Inteligencia.d \
 ./src/Interfaz_Hoppity.d 
 
 OBJS += \
 ./src/Estadisticas.o \
 ./src/FuncionesHoppity.o \
 ./src/INTELIGENCIA.o \
-./src/Inteligencia.o \
 ./src/Interfaz_Hoppity.o 
 
 
@@ -37,7 +34,7 @@ src/%.o: ../src/%.c src/subdir.mk
 clean: clean-src
 
 clean-src:
-	-$(RM) ./src/Estadisticas.d ./src/Estadisticas.o ./src/FuncionesHoppity.d ./src/FuncionesHoppity.o ./src/INTELIGENCIA.d ./src/INTELIGENCIA.o ./src/Inteligencia.d ./src/Inteligencia.o ./src/Interfaz_Hoppity.d ./src/Interfaz_Hoppity.o
+	-$(RM) ./src/Estadisticas.d ./src/Estadisticas.o ./src/FuncionesHoppity.d ./src/FuncionesHoppity.o ./src/INTELIGENCIA.d ./src/INTELIGENCIA.o ./src/Interfaz_Hoppity.d ./src/Interfaz_Hoppity.o
 
 .PHONY: clean-src
 
